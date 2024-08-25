@@ -33,7 +33,13 @@ else:
 path_file = '../../data/raw/'
 file_type = 'json'
 
-azure_connected = connection.ConnectionBlobStorage('raw', path_file)
-azure_connected.sendFiles(file_type)
+def main():
+    azure_connected = connection.ConnectionBlobStorage('raw', path_file)
+    azure_connected.sendFiles(file_type)
+
+if __name__ == "__main__":
+    main()
+
+
 
 
