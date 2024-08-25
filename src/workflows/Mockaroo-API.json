@@ -17,7 +17,7 @@
             "base_parameters": {
               "catalog": "hive_metastore",
               "database": "bronze",
-              "tablename": "news_economy"
+              "tablename": "movies"
             },
             "source": "GIT"
           },
