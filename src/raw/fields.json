@@ -1,0 +1,32 @@
+[
+    {"name": "movie_id", "type": "Row Number"},
+    {"name": "title", "type": "Movie Title"},
+    {"name": "genre", "type": "Movie Genres"},
+
+    {"name": "director_id", "type": "Row Number"},
+    {"name": "director_name", "type": "Full Name"},
+    {"name": "director_gender", "type": "Gender (Binary)"},
+    {"name": "director_country", "type": "Country Code"},
+    {"name": "director_age", "type": "Number", "min": 20, "max": 75, "decimals": 0},
+
+    {"name": "producer_id", "type": "Row Number"},
+    {"name": "producer_name", "type": "Full Name"},
+    {"name": "producer_gender", "type": "Gender (Binary)"},
+    {"name": "producer_country", "type": "Country Code"},
+    {"name": "producer_age", "type": "Number", "min": 20, "max": 75, "decimals": 0},
+
+    {"name": "platforms", "type": "Custom List", "values": ["Theater", "DVD", "Streaming"]},
+    {"name": "release_date", "type": "Datetime", "min": "1/1/1900", "max": "12/31/2024"},
+    {"name": "budget_million", "type": "Number", "min": 1, "max": 500, "decimals": 2},
+    {"name": "box_office_million", "type": "Number", "min": 0, "max": 2000, "decimals": 2},
+    {"name": "rating", "type": "Number", "min": 0, "max": 10, "decimals": 1},
+    {"name": "has_sequel", "type": "Boolean"},
+    {"name": "is_animated", "type": "Boolean"},
+    {"name": "has_post_credits_scene", "type": "Boolean"},
+    {"name": "languages_supported", "type": "Custom List", "values": ["English", "Spanish", "French"]},
+    {"name": "age_rating", "type": "Custom List", "values": ["G", "PG", "PG-13", "R"]},
+    {"name": "metacritic_score", "type": "Number", "min": 0, "max": 100},
+    {"name": "runtime_minutes", "type": "Number", "min": 30, "max": 300, "decimals": 0},
+    {"name": "has_bonus_features", "type": "Boolean"},
+    {"name": "is_reboot", "type": "Boolean"}
+]
