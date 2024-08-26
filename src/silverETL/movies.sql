@@ -1,5 +1,7 @@
 SELECT 
   movie_id,
+  director_id,
+  producer_id,
   title as movie_title,
   genre as movie_genre,
   platforms as movie_platforms,
