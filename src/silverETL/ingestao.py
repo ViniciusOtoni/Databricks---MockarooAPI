@@ -29,7 +29,7 @@ df = spark.sql(query)
 
 if table == 'movies':
 
-    pipe = pipeline.Pipe(df, 'genre')
+    pipe = pipeline.Pipe(df, 'movie_genre')
 
     df = pipe.execute()
 
