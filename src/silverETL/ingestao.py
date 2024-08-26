@@ -51,7 +51,3 @@ if not utils.table_exists(spark, catalog, database, table):
     print("Tabela criada com sucesso!")
 else:
     print("Tabela já existe, ignorando full-load")
-
-# COMMAND ----------
-
-
