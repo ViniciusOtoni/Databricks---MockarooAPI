@@ -3,6 +3,11 @@ import datetime
 import json
 import os
 
+
+def import_query(path):
+    with open(path, 'r') as open_file:
+        return open_file.read()
+
 def create_mount(spark, mount_name, source_url, conf_key, account_key):
     
     from pyspark.dbutils import DBUtils
