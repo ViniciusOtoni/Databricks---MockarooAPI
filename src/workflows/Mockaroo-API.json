@@ -32,6 +32,33 @@
         "webhook_notifications": {}
       },
       {
+        "task_key": "Silver-Director",
+        "depends_on": [
+          {
+            "task_key": "Bronze-GIT"
+          }
+        ],
+        "run_if": "ALL_SUCCESS",
+        "notebook_task": {
+          "notebook_path": "src/silverETL/ingestao",
+          "base_parameters": {
+            "catalog": "hive_metastore",
+            "database": "silver",
+            "tablename": "director"
+          },
+          "source": "GIT"
+        },
+        "existing_cluster_id": "0824-223458-x3hwfet2",
+        "timeout_seconds": 0,
+        "email_notifications": {},
+        "notification_settings": {
+          "no_alert_for_skipped_runs": false,
+          "no_alert_for_canceled_runs": false,
+          "alert_on_last_attempt": false
+        },
+        "webhook_notifications": {}
+      },
+      {
         "task_key": "Silver-Movies",
         "depends_on": [
           {
@@ -45,6 +72,90 @@
             "catalog": "hive_metastore",
             "tablename": "movies",
             "database": "silver"
+          },
+          "source": "GIT"
+        },
+        "existing_cluster_id": "0824-223458-x3hwfet2",
+        "timeout_seconds": 0,
+        "email_notifications": {},
+        "notification_settings": {
+          "no_alert_for_skipped_runs": false,
+          "no_alert_for_canceled_runs": false,
+          "alert_on_last_attempt": false
+        },
+        "webhook_notifications": {}
+      },
+      {
+        "task_key": "Gold-DirectorBoxOfficeContribuition",
+        "depends_on": [
+          {
+            "task_key": "Silver-Movies"
+          },
+          {
+            "task_key": "Silver-Director"
+          }
+        ],
+        "run_if": "ALL_SUCCESS",
+        "notebook_task": {
+          "notebook_path": "src/gold/ingestion",
+          "base_parameters": {
+            "tablename": "directorBoxOfficeContribution",
+            "conditionalSql": "",
+            "conditionalSqlValue": ""
+          },
+          "source": "GIT"
+        },
+        "existing_cluster_id": "0824-223458-x3hwfet2",
+        "timeout_seconds": 0,
+        "email_notifications": {},
+        "notification_settings": {
+          "no_alert_for_skipped_runs": false,
+          "no_alert_for_canceled_runs": false,
+          "alert_on_last_attempt": false
+        },
+        "webhook_notifications": {}
+      },
+      {
+        "task_key": "Gold-MovieBoxOffice",
+        "depends_on": [
+          {
+            "task_key": "Silver-Movies"
+          }
+        ],
+        "run_if": "ALL_SUCCESS",
+        "notebook_task": {
+          "notebook_path": "src/gold/ingestion",
+          "base_parameters": {
+            "conditionalSqlValue": "",
+            "conditionalSql": "",
+            "tablename": "movie_box_office"
+          },
+          "source": "GIT"
+        },
+        "existing_cluster_id": "0824-223458-x3hwfet2",
+        "timeout_seconds": 0,
+        "email_notifications": {},
+        "notification_settings": {
+          "no_alert_for_skipped_runs": false,
+          "no_alert_for_canceled_runs": false,
+          "alert_on_last_attempt": false
+        },
+        "webhook_notifications": {}
+      },
+      {
+        "task_key": "Gold-movie_streaming",
+        "depends_on": [
+          {
+            "task_key": "Silver-Movies"
+          }
+        ],
+        "run_if": "ALL_SUCCESS",
+        "notebook_task": {
+          "notebook_path": "src/gold/ingestion",
+          "base_parameters": {
+            "tablename": "movie_streaming",
+            "conditionalSql": "age_ranting",
+            "conditionalSqlValue": "L"
           },
           "source": "GIT"
         },
@@ -86,19 +197,22 @@
         "webhook_notifications": {}
       },
       {
-        "task_key": "Silver-Director",
+        "task_key": "Gold-ProducerMovies",
         "depends_on": [
           {
-            "task_key": "Bronze-GIT"
+            "task_key": "Silver-Movies"
+          },
+          {
+            "task_key": "Silver-Producer"
           }
         ],
         "run_if": "ALL_SUCCESS",
         "notebook_task": {
-          "notebook_path": "src/silverETL/ingestao",
+          "notebook_path": "src/gold/ingestion",
           "base_parameters": {
-            "catalog": "hive_metastore",
-            "database": "silver",
-            "tablename": "director"
+            "tablename": "producer_movies",
+            "conditionalSql": "",
+            "conditionalSqlValue": ""
           },
           "source": "GIT"
         },
