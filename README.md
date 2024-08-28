@@ -6,6 +6,7 @@ Este projeto demonstra a integração entre o Databricks e a API do Mockaroo par
 ## Estrutura do Projeto
 O projeto está organizado da seguinte forma:
 
+```css
 Databricks---MockarooAPI/
 │
 ├── src/
@@ -39,6 +40,7 @@ Databricks---MockarooAPI/
 ├── .gitignore
 ├── README.md
 └── LICENSE
+```
 
 ## Configuração
 
