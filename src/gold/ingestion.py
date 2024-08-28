@@ -23,5 +23,5 @@ ingest = ingestors.IngestorCubo(spark=spark,
                                     catalog=catalog,
                                     databasename=database,
                                     tablename=table)
-    
-ingest.execute(conditional=f'{conditionalValue}')
+
+ingest.execute(conditional=conditionalValue)
