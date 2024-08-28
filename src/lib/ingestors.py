@@ -52,6 +52,7 @@ class IngestaoSilver:
 
 
     def save(self, df):
+
         (df.coalesce(1)
             .write
             .format('delta')
@@ -82,6 +83,9 @@ class IngestorCubo:
         return df
     
     def save(self, df): 
+
+        spark.sql('DROP TABLE IF EXISTS {self.tablename}')
+
         if not utils.table_exists(self.spark, self.catalog, self.databasename, self.tablename):
             (df.coalesce(1)
             .write
