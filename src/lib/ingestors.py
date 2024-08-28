@@ -79,13 +79,12 @@ class IngestorCubo:
 
     def load(self, **kwargs):
         formatted_query = self.query.format(**kwargs)
-        print(f"Query: {formatted_query}")
         df = self.spark.sql(formatted_query)
         return df
     
     def save(self, df): 
 
-        self.spark.sql('DROP TABLE IF EXISTS {self.tablename}')
+        self.spark.sql(f'DROP TABLE IF EXISTS {self.tablename}')
 
         if not utils.table_exists(self.spark, self.catalog, self.databasename, self.tablename):
             (df.coalesce(1)
