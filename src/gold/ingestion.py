@@ -15,11 +15,7 @@ catalog = "hive_metastore"
 database = "gold" 
 table = dbutils.widgets.get("tablename") 
 conditional = dbutils.widgets.get("conditionalSql") 
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC DROP TABLE IF EXISTS gold.movie_streaming;
+conditionalValue = dbutils.widgets.get("conditionalSqlValue") 
 
 # COMMAND ----------
 
@@ -28,4 +24,4 @@ ingest = ingestors.IngestorCubo(spark=spark,
                                     databasename=database,
                                     tablename=table)
     
-ingest.execute(age_ranting=f'{conditional}')
+ingest.execute(conditional=f'{conditionalValue}')
